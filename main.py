@@ -79,7 +79,7 @@ max_value = aggregatedDataset.loc[aggregatedDataset['Students'].idxmax()]
 # Display the most popular course and the number of students in a metric card
 course_name = max_value['Course title']
 num_students = max_value['Students']
-st.write("Most Popular Course")
+st.write("Most Popular Courses")
 st.metric(label=course_name, value=num_students)
 
 # code for popular program
