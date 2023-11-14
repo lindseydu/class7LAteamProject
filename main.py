@@ -201,8 +201,20 @@ degree_awarded_count = degree_counts[degree_counts["Academic plan"] == prg]["Deg
 
 # Display the total enrollment for the selected academic plan using st.metric
 col1, col2 = st.columns(2)
-col1.metric(label="Total enrollment", value=selected_count)
-col2.metric(label="No of degrees awarded", value=degree_awarded_count)
+with col1:
+    st.markdown(f"""
+            <div style="{box_style}">                
+                <h6 style="margin:0; padding:0;">Total students enrolled</h6>
+                <h1 style="margin:0; padding:0;">{selected_count}</h1>
+            </div>
+            """, unsafe_allow_html=True)
+with col2:
+    st.markdown(f"""
+                <div style="{box_style}">                
+                    <h6 style="margin:0; padding:0;">No of degrees awarded</h6>
+                    <h1 style="margin:0; padding:0;">{degree_awarded_count}</h1>
+                </div>
+                """, unsafe_allow_html=True)
 
 filteredDataset['Degree awarded'] = (filteredDataset['Degree awarded']
                                      .apply(lambda x: "Graduated" if x != 'None' else "Did not graduate"))
